@@ -1,0 +1,108 @@
+$mainColor: rgba(118, 94, 229, 1.0);
+$baseColor: #F0F0F0;
+
+.wizard-progress {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  position: relative;
+
+  .step {
+    display: table-cell;
+    text-align: center;
+    vertical-align: bottom;
+    overflow: visible;
+    position: relative;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+
+    span {
+      top: 39px;
+      position: absolute;
+      z-index: 5;
+      left: 0;
+      right: -5px;
+      color: #fff;
+    }
+
+    p {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin-top: 90px;
+    }
+
+    &:not(:last-child):before {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: 38px;
+      background-color: $baseColor;
+      height: 15px;
+      width: 100%;
+      border: 4px solid $baseColor;
+    }
+
+    .outer-node {
+      display: inline-block;
+      z-index: 1;
+      border: 6px solid $baseColor;
+      background-color: $baseColor;
+      border-radius: 3rem;
+      height: 40px;
+      width: 40px;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      margin-left: -23px;
+    }
+
+    .node {
+      z-index: 2;
+      display: inline-block;
+      border: 6px solid $baseColor;
+      background-color: $baseColor;
+      border-radius: 3rem;
+      height: 28px;
+      width: 28px;
+      position: absolute;
+      top: 26px;
+      left: 50%;
+      margin-left: -17px;
+
+      &.complete {
+        background-color: $mainColor;
+        border-color: $mainColor;
+
+      }
+    }
+
+    &.complete {
+      &:before {
+        background-color: $mainColor;
+      }
+
+      .node {
+        border-color: $mainColor;
+        background-color: $mainColor;
+      }
+    }
+
+    &.in-progress {
+      &:before {
+        background: $mainColor;
+        background: -moz-linear-gradient(left, $mainColor 0%, $baseColor 100%);
+        background: -webkit-linear-gradient(left, $mainColor 0%, $baseColor 100%);
+        background: linear-gradient(to right, $mainColor 0%, $baseColor 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$mainColor}', endColorstr='#{$baseColor}', GradientType=1);
+      }
+
+      .node {
+        border-color: $mainColor;
+      }
+    }
+  }
+}
